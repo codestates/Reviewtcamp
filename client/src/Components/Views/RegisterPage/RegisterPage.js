@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './RegisterPage.css';
 import  {CKEditor} from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
@@ -6,32 +6,36 @@ import Axios from 'axios'
 
 
 function RegisterPage() {
-    const[movieContent, setMovieContent] = useState({
+    const[bodyContent, setbodyContent] = useState({
         title:'',
         content:''
     })
-    const [viewContent, setViewContent] =useState([])
-    const getValue=e=> {
+    const [viewContent, setViewContent] = useState([])
+    useEffect(() => {Axios.get('http://localhost:8080/api/get').then((response)=>{
+      setViewContent(response.data)
+    })},[viewContent])
+    const getValue = e => {
         const {name, value} = e.target;
-        setMovieContent({
-            ...movieContent,
+        setbodyContent({
+            ...bodyContent,
             [name]: value
         })
-        console.log(movieContent)
+        console.log(bodyContent)
     }
 
     const submitReview = ()=>{
-        Axios.post('http://localhost:8080/api/insert', {
-          title: movieContent.title,
-          content: movieContent.title
+      // api 포스트 자리에 들어가야 함 http://localhost:8080/api/post
+        Axios.post('api/post', {
+          title: bodyContent.title,
+          content: bodyContent.title
         }).then(()=>{
           alert('등록 완료!');
         })
       };
   return (
     <div className="App">
-    <h1>Movie Review</h1>
-    <div className='movie-container'>
+    <h1>BootcampReview</h1>
+    <div className='container'>
     {viewContent.map(element =>
         <div>
         <h2>{element.title}</h2>
@@ -44,7 +48,7 @@ function RegisterPage() {
                 onChange={getValue} name='title'/>
         <CKEditor
           editor={ClassicEditor}
-          data="<p>Hello from CKEditor 5!</p>"
+          data="<p>부트캠프에 대한 의견을 자세히 쓰세요!!</p>"
           onReady={editor => {
             // You can store the "editor" and use when it is needed.
             console.log('Editor is ready to use!', editor);
@@ -52,8 +56,8 @@ function RegisterPage() {
           onChange={(event, editor) => {
             const data = editor.getData();
             console.log({ event, editor, data });
-            setMovieContent({
-                ...movieContent, 
+            setbodyContent({
+                ...bodyContent, 
                 content: data
             })
           }}
@@ -65,9 +69,21 @@ function RegisterPage() {
           }}
         />
       </div>
-      <button className="submit-button"
-      onClick={submitReview}>입력</button>
+    <button className='submit-button'
+    onClick={() => {
+      setViewContent(viewContent.concat({...bodyContent}))
+    }}>입력하기</button>
+  
+
+
+
+
+    <div>
+  
     </div>
+  
+    </div>
+  
   );
 }
 export default RegisterPage;
