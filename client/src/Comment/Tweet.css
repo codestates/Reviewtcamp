@@ -1,0 +1,73 @@
+.tweet {
+    display: flex;
+    list-style: none;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid var(--main-border-color);
+  }
+  
+  .tweet:hover {
+    background-color: var(--shade-color);
+  }
+  
+  .tweet__profile {
+    padding: 0.2rem;
+  }
+  
+  .tweet__profile > img {
+    display: inline-block;
+    width: 50px;
+    border-radius: 100%;
+  }
+  
+  .tweet__content {
+    flex: 1 0 0;
+  }
+  
+  .tweet__userInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .tweet__userInfo--wrapper > .tweet__username {
+    display: inline-block;
+    color: var(--bold-text-color);
+    font-weight: 700;
+    margin-left: 0.5rem;
+  }
+  
+  .tweet__userInfo--wrapper > .tweet__createdAt {
+    display: inline-block;
+    color: var(--sub-text-color);
+    margin-left: 0.5rem;
+  }
+  
+  .tweet__userInfo--buttonWrapper > .tweet__deleteButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--button-color);
+    margin-left: 0.5rem;
+    padding: 0.2rem;
+    border-radius: 50px;
+  }
+  
+  .tweet__userInfo--buttonWrapper > .tweet__deleteButton > .far {
+    color: var(--button-text-color);
+    background-color: var(--button-color);
+    font-size: 0.8rem;
+    padding: 0.1rem;
+    border-radius: 50px;
+  }
+  
+  .tweet__userInfo--buttonWrapper > button:hover, 
+  .tweet__userInfo--buttonWrapper > button:focus {
+    outline: none;
+    box-shadow: 0 0 3px var(--button-color);
+    background: var(--tweets-component-color);
+  }
+  
+  .tweet__message {
+    padding: 0.5rem;
+  }
+  
