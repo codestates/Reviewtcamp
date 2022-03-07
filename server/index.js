@@ -7,11 +7,15 @@ const express = require("express");
 const controller = require('./controller');
 const app = express();
 
+app.use(cors());
+app.use(express.json());
+
 app.get('/', (req, res) => {
-  res.send(`Congrats! You made https server now :) now port ${HTTPS_PORT}`)
+  res.send('welcome home 😁');
 })
 
-app.get('/signin', controller.signin)
+// app.get('/signin', controller.signin)
+// app.get('/board', './controller/board.js')
 
 // process.env.HTTPS_PORT 환경 변수 PORT에 있는 모든 것을 의미하며, 아무것도 없으면 8080을 실행
 const HTTPS_PORT = process.env.HTTPS_PORT || 8080;
@@ -22,7 +26,7 @@ if(fs.existsSync('./key.pem') && fs.existsSync('./cert.pem')) {
   const credentials = { key: privateKey, cert: certificate };
 
   server = https.createServer(credentials, app);
-  server.listen(HTTPS_PORT, () => console.log(`https server runnning ${HTTPS_PORT}`));
+  server.listen(HTTPS_PORT, () => console.log(`✅ Listening on 'http://localhost:${HTTPS_PORT}'`));
 } else{
   server = app.listen(HTTPS_PORT)
 
