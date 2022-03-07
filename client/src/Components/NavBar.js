@@ -4,10 +4,6 @@ function NavBar() {
         <div>
         <button>로고 들어가는 자리</button>
         <button>마이페이지</button>
-        <button>게시판</button>
-
-        <button>글 목록</button>
-
         <button>로그아웃</button>
         </div>
     )

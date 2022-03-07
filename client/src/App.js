@@ -1,21 +1,29 @@
 import React from 'react';
-import { Link, Route, BrowserRouter, Switch} from 'react-router-dom'
-import NavBar from './Components/NavBar';
+import { Route, Switch } from 'react-router-dom'
+
 import RegisterPage from './Components/Views/RegisterPage/RegisterPage';
 import ArticlePage from './Components/Views/ArticlePage/ArticlePage';
 import Home from './Pages/Home';
 import BoardPage from './Components/Views/BoardPage/BoardPage';
 function App() {
   return (
-<div>
-        <NavBar />
-        <Switch> <Route exact path="/"><Home /></Route>
-       
-         <Route exact path="/register"><RegisterPage /></Route>
-        <Route exact path="/article"><ArticlePage /></Route>
-        <Route exact path="/board"><BoardPage /></Route>
-</Switch>
-</div>
+    <div className='App'>
+    <Switch>
+      <Route exact path="/">
+        <Home />
+      </Route>
+      <Route path="/article/:id">
+        <ArticlePage />
+      </Route>
+      <Route path="/board">
+        <BoardPage />
+      </Route>
+      <Route path="/register">
+        <RegisterPage />
+      </Route>
+    </Switch>
+  </div>
+
   );
 }
 
