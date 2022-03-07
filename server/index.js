@@ -12,7 +12,11 @@ app.use(express.json());
 
 app.get('/', (req, res) => {
   res.send('welcome home 😁');
-})
+});
+
+app.post('/signup', (req, res) => {
+  res.send('✅ signup page');
+});
 
 // app.get('/signin', controller.signin)
 // app.get('/board', './controller/board.js')
