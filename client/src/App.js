@@ -5,6 +5,7 @@ import RegisterPage from './Components/Views/RegisterPage/RegisterPage';
 import ArticlePage from './Components/Views/ArticlePage/ArticlePage';
 import Home from './Pages/Home';
 import BoardPage from './Components/Views/BoardPage/BoardPage';
+import Tweets from './Pages/Tweets';
 function App() {
   return (
     <div className='App'>
@@ -21,6 +22,9 @@ function App() {
       <Route path="/register">
         <RegisterPage />
       </Route>
+      <Route path="/tweets">
+      <Tweets />
+    </Route>
     </Switch>
   </div>
 

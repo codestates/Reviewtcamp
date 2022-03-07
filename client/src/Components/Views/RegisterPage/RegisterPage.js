@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './RegisterPage.css';
 import  {CKEditor} from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
@@ -11,6 +11,9 @@ function RegisterPage() {
         content:''
     })
     const [viewContent, setViewContent] = useState([])
+    useEffect(() => {Axios.get('http://localhost:8080/api/get').then((response)=>{
+      setViewContent(response.data)
+    })},[viewContent])
     const getValue = e => {
         const {name, value} = e.target;
         setbodyContent({
@@ -21,7 +24,8 @@ function RegisterPage() {
     }
 
     const submitReview = ()=>{
-        Axios.post('api/insert', {
+      // api 포스트 자리에 들어가야 함 http://localhost:8080/api/post
+        Axios.post('api/post', {
           title: bodyContent.title,
           content: bodyContent.title
         }).then(()=>{
@@ -69,7 +73,17 @@ function RegisterPage() {
     onClick={() => {
       setViewContent(viewContent.concat({...bodyContent}))
     }}>입력하기</button>
+  
+
+
+
+
+    <div>
+  
     </div>
+  
+    </div>
+  
   );
 }
 export default RegisterPage;
