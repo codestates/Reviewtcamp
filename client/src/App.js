@@ -1,20 +1,29 @@
-import logo from './logo.svg';
 import React from 'react';
-import { Route, Switch } from 'express';
-import './App.css';
+import { Route, Switch } from 'react-router-dom'
+
 import RegisterPage from './Components/Views/RegisterPage/RegisterPage';
 import ArticlePage from './Components/Views/ArticlePage/ArticlePage';
 import Home from './Pages/Home';
-
+import BoardPage from './Components/Views/BoardPage/BoardPage';
 function App() {
   return (
-    <div className="App">
+    <div className='App'>
     <Switch>
-    <Route exact path = "/" component={Home} />
-     <Route path = "/register" component= {RegisterPage} />
-     <Route path = "/article/:articleID" component= {ArticlePage} />
-     </Switch>
-    </div>
+      <Route exact path="/">
+        <Home />
+      </Route>
+      <Route path="/article/:id">
+        <ArticlePage />
+      </Route>
+      <Route path="/board">
+        <BoardPage />
+      </Route>
+      <Route path="/register">
+        <RegisterPage />
+      </Route>
+    </Switch>
+  </div>
+
   );
 }
 
