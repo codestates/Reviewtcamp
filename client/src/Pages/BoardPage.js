@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import BoardList from "./Sections/BoardList";
+import BoardList from "./BoardList";
 import { Link, useParams } from 'react-router-dom'
-import { fetchBoardById } from "../../../api/BoardApi";
+import { fetchBoardById } from "../api/BoardApi";
 
 function BoardPage() {
     const params = useParams();
     const [board, setBoard] = useState();
+    const [like, setLike] = useState(0);
 
     useEffect(() => {
         // useEffect 역할 : 생성될 때 1번만 호출,초기화 함수, 데이터, 서버 API 호출 
@@ -23,17 +24,19 @@ function BoardPage() {
         <div>
             <div>
                 <h1>{board ? board.title : "어떤 게시판이 나올까요?"} 게시판 </h1>
-                <Link to="/board/1">코드스테이츠</Link>
-                <Link to="/board/2">위코드</Link>
-                <Link to="/board/3">멋쟁이사자</Link>
-                <Link to="/board/4"></Link>
-                <Link to="/board/5">..</Link>
-                <Link to="/board/6">..</Link>
+    
+                <Link to="/board/1"><button>코드스테이츠</button></Link>
+                <Link to="/board/2"><button>위코드</button></Link>
+                <Link to="/board/3"><button>멋쟁이사자</button></Link>
+                <Link to="/board/4"><button>항해99</button></Link>
+                <Link to="/board/5"><button>네이버</button></Link>
+                <Link to="/board/6"><button>기타</button></Link>
                 <div>
                     <div style={{ display: "flex", gap: "8px", textAlign: "center" }}>
                         <div>제목</div>
                         <div>유저이름</div>
                         <div>날짜</div>
+                        <div><span onClick={()=>{setLike(like+1)}}>👍</span>{like}</div>
                     </div>
                     {board ? board.post.map(post =>
                         <Link key={post.id} to={`/article/${post.id}`}>
