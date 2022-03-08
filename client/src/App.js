@@ -9,13 +9,35 @@ import Mypage from "./Pages/Mypage";
 export default function App() {
   const [isLogin, setIsLogin] = useState(false);
   const [accessToken, setAccessToken] = useState("");
-
-  <h2>여기 충돌 나야함</h2>;
+  const [loading, setLoading] = useState(true);
 
   const loginHandler = (data) => {
     setIsLogin(true);
     setAccessToken(data.token.accessToken);
   };
+
+  // ! New AccessToken발급
+  useEffect(() => {
+    async function checkRefreshToKen() {
+      // ! New AccessToken 어디서 발급 받나? 엔드포인드?
+      const result = await await fetch("https://reviewtcamp.com/refreshtoken", {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-type": "application/json",
+        },
+      });
+      setAccessToken({
+        accesstoken: result.accessToken,
+      });
+      // setLoading(false);
+    }
+    setLoading(false);
+    checkRefreshToKen();
+  }, []);
+
+  if (loading) return <div>Loading...</div>;
+
   return (
     <div>
       <Switch>
