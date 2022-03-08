@@ -5,12 +5,17 @@ import "./App.css";
 import Signup from "./Pages/Signup";
 import Signin from "./Pages/Signin";
 import Mypage from "./Pages/Mypage";
+import BoardList from "./Pages/BoardList";
+import BoardPage from "./Pages/BoardPage";
+import ArticlePage from "./Pages/ArticlePage";
+import NavBar from "./Pages/NavBar";
+import Home from "./Pages/Home";
+import RegisterPage from "./Pages/RegisterPage";
 
 export default function App() {
   const [isLogin, setIsLogin] = useState(false);
   const [accessToken, setAccessToken] = useState("");
   const [loading, setLoading] = useState(true);
-
   const loginHandler = (data) => {
     setIsLogin(true);
     setAccessToken(data.token.accessToken);
@@ -39,8 +44,10 @@ export default function App() {
   if (loading) return <div>Loading...</div>;
 
   return (
-    <div>
+    <div>   
+    <NavBar />
       <Switch>
+   
         <Route exact path="/signin">
           <Signin loginHandler={loginHandler} />
         </Route>
@@ -59,10 +66,42 @@ export default function App() {
           )} */}
         </Route>
 
-        <Route path="/">
+        <Route exact path="/"> 
           {isLogin ? <Redirect to="/mypage" /> : <Redirect to="/signin" />}
+    
+          </Route>
+
+          <Route exact path="/home">
+          <Home />
         </Route>
-      </Switch>
+      <Route exact path="/article/:id">
+        <ArticlePage />
+      </Route>
+      <Route exact path="/board/:id">
+        <BoardPage />
+      </Route>
+      <Route exact path="/register">
+        <RegisterPage />
+      </Route>
+      
+      
+      
+      
+      
+      
+      
+        </Switch>
+
+
+
+
+
     </div>
+
+
+
+
+
+
   );
 }
