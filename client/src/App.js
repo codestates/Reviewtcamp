@@ -10,7 +10,7 @@ export default function App() {
   const [isLogin, setIsLogin] = useState(false);
   const [accessToken, setAccessToken] = useState("");
 
-  <h2>여기 충돌이 나네요.....</h2>;
+  <h2>여기 충돌 나야함</h2>;
 
   const loginHandler = (data) => {
     setIsLogin(true);
