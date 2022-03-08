@@ -38,8 +38,8 @@ export default function Signin(props) {
 
   const history = useHistory();
   // 수정하기 버튼을 누르면  patch 요청
-  const handleSignup = () => {
-    console.log("작동하니?");
+  const handleSignup = (props) => {
+    // console.log("작동하니?");
     axios
       .patch(
         "https://reviewtcamp.com/userinfo",
