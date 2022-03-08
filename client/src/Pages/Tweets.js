@@ -1,25 +1,24 @@
 import React, { useState } from 'react';
-import Tweet from "../Comment/Tweet";
-import dummyTweets from '../static/dummyData';
-// import shortid from 'shortid';
+import Tweet from "./Tweet";
+import dummyTweets from '../api/dummyTweets';
+
 
 const Tweets = () => {
-  const [username, setUsername] = useState('parkhacker');
-  const [msg, setMsg] = useState('');
-  const [tweets, setTweets] = useState(dummyTweets);
-  const [filteredTweets, setFilteredTweets] = useState(dummyTweets);
-  const [isFiltered, setIsFiltered] = useState(false);
-  const [currentUsername, setCurrentUsername] = useState('default');
+const [username, setUsername] = useState('');
+const [msg, setMsg] = useState('');
+const [tweets, setTweets] = useState(dummyTweets);
+const [filteredTweets, setFilteredTweets] = useState(dummyTweets);
+const [isFiltered, setIsFiltered] = useState(false);
+const [currentUsername, setCurrentUsername] = useState('default');
 
-  const handleButtonClick = (event) => {
+const handleButtonClick = (event) => {
     const tweet = {
-      // id: shortid(),
-      username: username,
-      picture: 'https://randomuser.me/api/portraits/men/98.jpg',
-      title: 'new Tweet',
-      content: msg,
-      createdAt: new Date().toLocaleDateString('ko-KR'),
-      updatedAt: new Date().toLocaleDateString('ko-KR'),
+
+    username: username,
+    title: 'new Tweet',
+    content: msg,
+    createdAt: new Date().toLocaleDateString('ko-KR'),
+    updatedAt: new Date().toLocaleDateString('ko-KR'),
     };
     const newTweets = [tweet, ...tweets];
     setTweets(newTweets);
