@@ -11,7 +11,7 @@ import ArticlePage from "./Pages/ArticlePage";
 import NavBar from "./Pages/NavBar";
 import Home from "./Pages/Home";
 import RegisterPage from "./Pages/RegisterPage";
-import Tweets from "./Pages/Tweets";
+import Comments from "./Pages/Comments";
 
 export default function App() {
   const [isLogin, setIsLogin] = useState(false);
@@ -62,8 +62,8 @@ export default function App() {
       <Route exact path="/register">
         <RegisterPage />
       </Route>
-      <Route exact path="/tweet">
-      <Tweets />
+      <Route exact path="/comments">
+      <Comments />
       </Route>
       
       

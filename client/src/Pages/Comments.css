@@ -1,26 +1,26 @@
-.tweetForm__container {
+.commentForm__container {
     border-bottom: 1px solid var(--main-border-color);
     margin-bottom: 0.5rem;
   }
   
-  .tweetForm__wrapper {
+  .commentForm__wrapper {
     display: flex;
     flex-direction: row;
     padding: 0.5rem 1rem;
-    background-color: var(--tweets-component-color);
+    background-color: var(--comments-component-color);
   }
   
-  .tweetForm__profile {
+  .commentForm__profile {
     padding: 0.2rem;
   }
   
-  .tweetForm__profile > img {
+  .commentForm__profile > img {
     display: inline-block;
     width: 50px;
     border-radius: 100%;
   }
   
-  .tweetForm__inputContainer {
+  .commentForm__inputContainer {
     display: flex;
     justify-content: center;
     align-content: center;
@@ -28,82 +28,82 @@
     flex: 1 0 0;
   }
   
-  .tweetForm__inputWrapper {
+  .commentForm__inputWrapper {
     display: flex;
     margin: 0.5rem;
     flex: 0 0 4rem;
   }
   
-  .tweetForm__input {
+  .commentForm__input {
     display: flex;
     flex-direction: column;
     flex: 1 0 0;
   }
   
-  .tweetForm__input--username {
+  .commentForm__input--username {
     flex: 1 0 0;
     width: 20rem;
     border: 0;
     margin-bottom: 2px;
   }
   
-  .tweetForm__input--message {
+  .commentForm__input--message {
     flex: 3 0 0;
     width: 20rem;
     border: 0;
   }
   
-  .tweetForm__count {
+  .commentForm__count {
     margin: 0.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
   }
   
-  .tweetForm__count__text {
+  .commentForm__count__text {
     color: white;
   }
   
-  .tweetForm__submit {
+  .commentForm__submit {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     flex: 1 0 0;
   }
   
-  .tweetForm__submitIcons {
+  .commentForm__submitIcons {
     flex: 1 0 0;
   }
   
-  .tweetForm__submitButton {
+  .commentForm__submitButton {
     margin: 0.5rem;
     padding: 0.5rem 1rem;
     border-radius: 1rem;
   }
   
-  .tweetForm__submitButton:hover,
-  .tweetForm__submitButton:focus {
-    background: var(--tweets-component-color);
+  .commentForm__submitButton:hover,
+  .commentForm__submitButton:focus {
+    background: var(--comments-component-color);
   }
   
-  .tweetForm__submitButton:focus {
+  .commentForm__submitButton:focus {
     outline: none;
     box-shadow: 0 0 3px #ddd;
   }
   
-  .tweets {
+  .comments {
     flex: 1 0 80vh;
-    border: 2px solid var(--tweets-component-color);
+    border: 2px solid var(--comments-component-color);
     overflow-y: scroll;
   }
   
-  .tweet__selectUser {
+  .comment__selectUser {
     display: flex;
     flex-direction: row;
     margin-bottom: 8px;
   }
   
-  .tweet__selectUser > button {
+  .comment__selectUser > button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -113,14 +113,14 @@
     border-radius: 50px;
   }
   
-  .tweet__selectUser > button:hover,
-  .tweet__selectUser > button:focus {
+  .comment__selectUser > button:hover,
+  .comment__selectUser > button:focus {
     outline: none;
     box-shadow: 0 0 3px var(--button-color);
-    background: var(--tweets-component-color);
+    background: var(--comments-component-color);
   }
   
-  .tweet__selectUser > button > .far {
+  .comment__selectUser > button > .far {
     color: var(--button-text-color);
     background-color: var(--button-color);
     font-size: 0.8rem;
