@@ -1,0 +1,130 @@
+.commentForm__container {
+    border-bottom: 1px solid var(--main-border-color);
+    margin-bottom: 0.5rem;
+  }
+  
+  .commentForm__wrapper {
+    display: flex;
+    flex-direction: row;
+    padding: 0.5rem 1rem;
+    background-color: var(--comments-component-color);
+  }
+  
+  .commentForm__profile {
+    padding: 0.2rem;
+  }
+  
+  .commentForm__profile > img {
+    display: inline-block;
+    width: 50px;
+    border-radius: 100%;
+  }
+  
+  .commentForm__inputContainer {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    flex: 1 0 0;
+  }
+  
+  .commentForm__inputWrapper {
+    display: flex;
+    margin: 0.5rem;
+    flex: 0 0 4rem;
+  }
+  
+  .commentForm__input {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 0;
+  }
+  
+  .commentForm__input--username {
+    flex: 1 0 0;
+    width: 20rem;
+    border: 0;
+    margin-bottom: 2px;
+  }
+  
+  .commentForm__input--message {
+    flex: 3 0 0;
+    width: 20rem;
+    border: 0;
+  }
+  
+  .commentForm__count {
+    margin: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .commentForm__count__text {
+    color: white;
+  }
+  
+  .commentForm__submit {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex: 1 0 0;
+  }
+  
+  .commentForm__submitIcons {
+    flex: 1 0 0;
+  }
+  
+  .commentForm__submitButton {
+    margin: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+  }
+  
+  .commentForm__submitButton:hover,
+  .commentForm__submitButton:focus {
+    background: var(--comments-component-color);
+  }
+  
+  .commentForm__submitButton:focus {
+    outline: none;
+    box-shadow: 0 0 3px #ddd;
+  }
+  
+  .comments {
+    flex: 1 0 80vh;
+    border: 2px solid var(--comments-component-color);
+    overflow-y: scroll;
+  }
+  
+  .comment__selectUser {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 8px;
+  }
+  
+  .comment__selectUser > button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--button-color);
+    margin-left: 0.5rem;
+    padding: 0.2rem;
+    border-radius: 50px;
+  }
+  
+  .comment__selectUser > button:hover,
+  .comment__selectUser > button:focus {
+    outline: none;
+    box-shadow: 0 0 3px var(--button-color);
+    background: var(--comments-component-color);
+  }
+  
+  .comment__selectUser > button > .far {
+    color: var(--button-text-color);
+    background-color: var(--button-color);
+    font-size: 0.8rem;
+    padding: 0.1rem;
+    border-radius: 50px;
+  }
+  
