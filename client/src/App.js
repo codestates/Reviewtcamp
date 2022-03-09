@@ -33,27 +33,22 @@ export default function App() {
         <Route exact path="/signin">
           <Signin loginHandler={loginHandler} />
         </Route>
-
         <Route exact path="/signup">
           <Signup />
         </Route>
-
         <Route exact path="/mypage">
           <Mypage accessToken={accessToken} />
         </Route>
-
         <Route exact path="/">
           {isLogin ? <Redirect to="/mypage" /> : <Redirect to="/signin" />}
         </Route>
-
         <Route exact path="/modal">
           <Modal />
         </Route>
-
         <Route exact path="/home">
           <Home />
         </Route>
-        <Route exact path="/article/:id">
+        <Route exact path="/article/:boardId/:postId">
           <ArticlePage />
         </Route>
         <Route exact path="/board/:id">
@@ -61,6 +56,9 @@ export default function App() {
         </Route>
         <Route exact path="/register">
           <RegisterPage />
+        </Route>
+        <Route exact path="/comments">
+          <Comments />
         </Route>
       </Switch>
     </div>
