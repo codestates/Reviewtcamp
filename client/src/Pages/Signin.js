@@ -16,6 +16,8 @@ export default function Signin(props) {
 
   // 에러 메시지 상태 저장
   const [errorMessage, setErrorMessage] = useState("");
+  // 토큰 상태 저장
+  const [accessToken, setAccessToken] = useState("");
 
   const history = useHistory();
   // 로그인을 누를 경우 POST 요청
@@ -23,7 +25,7 @@ export default function Signin(props) {
     // 이메일, 로그인을 입력하지 않은 경우 에러 메시지
     const { email, password } = userInfo;
     if (!email) {
-      setErrorMessage("아이디를 입력해주세요");
+      setErrorMessage("이메일을 입력해주세요");
     } else if (!password) {
       setErrorMessage("비밀번호를 입력해주세요");
     } else {
@@ -39,6 +41,7 @@ export default function Signin(props) {
           if (res.data.token === undefined) {
             setErrorMessage("아이디 또는 비밀번호를 잘못 입력했습니다.");
           } else {
+            setAccessToken(res.data.accesstokenf);
             props.loginHandler(res.data);
             // ! 로그인 완료 시 -> 메인 게시판 URI가 어딨지? -> 민주씨 메인 게시판으로 이동하기
             history.push("/");
@@ -47,6 +50,7 @@ export default function Signin(props) {
         .catch((err) => console.log(err));
     }
   };
+
   return (
     <div className="login-wrapper">
       <center>
@@ -60,7 +64,7 @@ export default function Signin(props) {
                 name="email"
                 placeholder="이메일을 입력해주세요"
                 onChange={handleInputValue("email")}
-                autoComplete="email"
+                autoComplete="off"
               ></input>
             </p>
             <p>
@@ -70,7 +74,7 @@ export default function Signin(props) {
                 name="password"
                 placeholder="비밀번호를 입력해주세요"
                 onChange={handleInputValue("password")}
-                autoComplete="password"
+                autoComplete="off"
               ></input>
             </p>
             <p>{errorMessage}</p>
