@@ -21,28 +21,6 @@ export default function App() {
     setAccessToken(data.token.accessToken);
   };
 
-  // ! New AccessToken발급 
-  useEffect(() => {
-    async function checkRefreshToKen() {
-      // ! New AccessToken 어디서 발급 받나? 엔드포인드?
-      const result = await fetch("https://reviewtcamp.com/refreshtoken", {
-        method: "POST",
-        credentials: "include",
-        headers: {
-          "Content-type": "application/json",
-        },
-      });
-      setAccessToken({
-        accesstoken: result.accessToken,
-      });
-      // setLoading(false);
-    }
-    setLoading(false);
-    checkRefreshToKen();
-  }, []);
-
-  if (loading) return <div>Loading...</div>;
-
   return (
     <div>   
     <NavBar />
