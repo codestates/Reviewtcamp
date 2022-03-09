@@ -34,7 +34,7 @@ export default function Signup() {
     console.log("작동하니?");
     axios
       .post(
-        "https://reviewtcamp.com/signup",
+        "https://localhost:8080/signup",
         {
           name: name,
           email: email,

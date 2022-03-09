@@ -1,3 +1,4 @@
-// module.exports = {
-//     signin: require('./auth/signin'),
-// };
+module.exports = {
+  signup: require('./auth/singup'),
+  signin: require('./auth/signin'),
+};
