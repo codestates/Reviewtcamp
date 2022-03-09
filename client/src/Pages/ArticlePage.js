@@ -32,7 +32,10 @@ function ArticlePage() {
 const _fetchPost= async() =>{
     
     // 그리고 헷갈리니까, boardId도 boardId라고 해주는게 좋아. 
-    // 굿 
+    
+    // 댓글해야하는ㄷ데 코쿜쿜 ㅋ쿜ㅋ 
+    // 가족들 다멀쩌한데 ㅏ만 걸린거보니 의심스러 
+    // 댓글 개볼께유~
 
     const response = await fetchPost(params.boardId, params.postId)
     // article에 담음
@@ -40,7 +43,7 @@ const _fetchPost= async() =>{
 }
     return (
         <div>
-            id:{params.id}
+            id:{params.postId}
             {/* <div>{article.tiele}</div> */}
         </div>
     )
