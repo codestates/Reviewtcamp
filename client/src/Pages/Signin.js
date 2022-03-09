@@ -25,7 +25,7 @@ export default function Signin(props) {
     // 이메일, 로그인을 입력하지 않은 경우 에러 메시지
     const { email, password } = userInfo;
     if (!email) {
-      setErrorMessage("아이디를 입력해주세요");
+      setErrorMessage("이메일을 입력해주세요");
     } else if (!password) {
       setErrorMessage("비밀번호를 입력해주세요");
     } else {
@@ -64,7 +64,7 @@ export default function Signin(props) {
                 name="email"
                 placeholder="이메일을 입력해주세요"
                 onChange={handleInputValue("email")}
-                autoComplete="email"
+                autoComplete="off"
               ></input>
             </p>
             <p>
@@ -74,7 +74,7 @@ export default function Signin(props) {
                 name="password"
                 placeholder="비밀번호를 입력해주세요"
                 onChange={handleInputValue("password")}
-                autoComplete="current-password"
+                autoComplete="off"
               ></input>
             </p>
             <p>{errorMessage}</p>

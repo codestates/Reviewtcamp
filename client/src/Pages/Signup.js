@@ -75,7 +75,7 @@ export default function Signup() {
     const nameCurrent = e.target.value;
     if (!namePattern.test(nameCurrent)) {
       setNameMessage(
-        "이름 패턴 한글과 영문 대 소문자를 사용하세요. (특수기호, 공백 사용 불가)"
+        "한글과 영문 대 소문자를 사용하세요. (특수기호, 공백 사용 불가)"
       );
       setIsName(false);
     } else {
@@ -116,18 +116,16 @@ export default function Signup() {
   );
 
   return (
-    <center>
-      <h2>회원가입</h2>
+    <div className="login-wrapper">
+      <h2>Signup</h2>
       <form onSubmit={(e) => e.preventDefault()}>
-        <p>
-          <div>
-            <label htmlFor="email">이메일</label>
-          </div>
+        <div className="login-input">
           <input
             id="email"
             type="email"
             name="name"
             placeholder="이메일"
+            autoComplete="off"
             onChange={onChangeEmail}
           ></input>
           {/* 중복검사 버튼 지움 -> 외부 누르면 post 요청 보내기 -> API가 없음 */}
@@ -138,17 +136,12 @@ export default function Signup() {
               </span>
             )}
           </div>
-        </p>
 
-        <p>
-          <div>
-            <label htmlFor="name">이름</label>
-          </div>
           <input
-            id="name"
             type="text"
             name="name"
             placeholder="이름"
+            autoComplete="off"
             onChange={onChangeName}
           />
           <div className="formbox">
@@ -158,14 +151,8 @@ export default function Signup() {
               </span>
             )}
           </div>
-        </p>
 
-        <p>
-          <div>
-            <label htmlFor="password">비밀번호</label>
-          </div>
           <input
-            id="password"
             type="password"
             name="password"
             placeholder="비밀번호"
@@ -178,14 +165,8 @@ export default function Signup() {
               </span>
             )}
           </div>
-        </p>
 
-        <p>
-          <div>
-            <label htmlFor="confirmpassword">비밀번호확인</label>
-          </div>
           <input
-            id="confirmpassword"
             type="password"
             name="confirmpassword"
             placeholder="비밀번호 확인"
@@ -200,22 +181,17 @@ export default function Signup() {
               </span>
             )}
           </div>
-        </p>
 
-        <button type="reset">취소</button>
-        {/*취소 버튼은 최근에는 만들지 않는추세. 잘못누를수도*/}
-        <button type="submit" onClick={handleSignup}>
-          회원가입
-        </button>
-
-        <p>
-          <div>or</div>
-        </p>
-
-        <p>
-          <Link to="/login">이미 아이디가 있으신가요?</Link>
-        </p>
+          <button type="reset">취소</button>
+          {/*취소 버튼은 최근에는 만들지 않는추세. 잘못누를수도*/}
+          <button type="submit" onClick={handleSignup}>
+            회원가입
+          </button>
+        </div>
+        <div className="caption">
+          <Link to="/signin">이미 아이디가 있으신가요?</Link>
+        </div>
       </form>
-    </center>
+    </div>
   );
 }
