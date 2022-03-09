@@ -53,7 +53,8 @@ export default function App() {
           <Route exact path="/home">
           <Home />
         </Route>
-      <Route exact path="/article/:id">
+    
+      <Route exact path="/article/:boardId/:postId">
         <ArticlePage />
       </Route>
       <Route exact path="/board/:id">

@@ -1,55 +1,52 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import Comment from "./Comment";
-import dummycomments from '../api/dummycomments';
+import dummycomments from "../api/dummycomments";
 
+// 머해야 대지?
+// 글을 쓰면 상태 업데이트 (-> state에 추가하는 방식으로 해야겠네 임시로)
 
-// Let's go~~ 
-// 설명? 다시 해죠~ 뭐 해야 되지? 
-// TODO: 코멘트 달기 
-// 글써서 수정/삭제 
-//  백엔드 만들어졌어? 근데 어케해? 못하는뎅
-// 프론트에서 있는걸 보여주는 거야 어케 있는 척 한다고 해도 
-// 삭제 되는 척 같은건 의미가 없는데 
-// CRUD 중에 R은 했오? 
-
-// 백엔드 없을 때에는, 보통 R을 먼저 완성도 있게 하는걸 목표로 하는게 좋아 
-// CUD가 의미가 없어... 
-// 쨋든 그타 치고, 이거 근데 이케 하니께 내가 구동을 해볼 수가 없는거 같다 ㅋㅋ 
-//너의 PC라서 
-// 민주가 화면공유를 하는게 낫겠어 localhost:3000까지 보이게 
-
+// 아저씨 사진너무 붎쾌한데 ㅋㅋㅋ
+// 사진 위치가 댓글 위치인가?
+// 제일 아래쪽에 뜨게할꺼야? 댓글들?
 
 const Comments = () => {
-const [username, setUsername] = useState('');
-const [msg, setMsg] = useState('');
-const [comments, setcomments] = useState(dummycomments);
-const [filteredcomments, setFilteredcomments] = useState(dummycomments);
-const [isFiltered, setIsFiltered] = useState(false);
-const [currentUsername, setCurrentUsername] = useState('default');
+  const [username, setUsername] = useState("");
+  const [msg, setMsg] = useState("");
+  // 메시지라 유저네임이랑 작성하는 데 비어 있는 곳이 있어
+  // 잠깐만여~~ 아래로 내려와바~
+  const [comments, setcomments] = useState(dummycomments); //
+  const [filteredComments, setFilteredComments] = useState(dummycomments);
+  const [isFiltered, setIsFiltered] = useState(false);
+  const [currentUsername, setCurrentUsername] = useState("default");
 
-const handleButtonClick = (event) => {
+  //버튼을 누르면 이벤트가 발생하는데 거기에 들어갈 내용
+  const handleButtonClick = (event) => {
     const comment = {
-
-    username: username,
-    title: 'new comment',
-    content: msg,
-    createdAt: new Date().toLocaleDateString('ko-KR'),
-    updatedAt: new Date().toLocaleDateString('ko-KR'),
+      //코멘트 안에는 해당 내용들이 들억고
+      username: username,
+      title: "new comment",
+      content: msg,
+      createdAt: new Date().toLocaleDateString("ko-KR"),
+      updatedAt: new Date().toLocaleDateString("ko-KR"),
     };
+
+    //newcomments는 더미 텍스트에 있는 코멘츠를 복사한 값을
     const newcomments = [comment, ...comments];
     setcomments(newcomments);
+    //그러면 셋모멘트는 ([comment, ...comments]) 이게 된다는 말인데
+    //=>이 말은 다시 각각의 안에 있는 내용을 다 받아준다.
   };
 
   const handleChangeUser = (event) => {
-    setUsername(event.target.value)
-  }
+    setUsername(event.target.value);
+  };
 
   const handleChangeMsg = (event) => {
-    setMsg(event.target.value)
-  }
+    setMsg(event.target.value);
+  };
 
   const handleFiltercomment = (event) => {
-    if (event.target.value === 'default') {
+    if (event.target.value === "default") {
       setcomments(comments);
       setIsFiltered(false);
     } else {
@@ -57,14 +54,14 @@ const handleButtonClick = (event) => {
         (comment) => comment.username === event.target.value
       );
       setIsFiltered(true);
-      setFilteredcomments(filtered);
+      setFilteredComments(filtered);
     }
     setCurrentUsername(event.target.value);
   };
 
   const handleDeletecomment = (username, deleteIndex) => {
     if (isFiltered) {
-      alert('필터 시 삭제 불가합니다.')
+      alert("필터 시 삭제 불가합니다.");
       return;
     }
     const restcomments = comments.filter((comment, idx) => idx !== deleteIndex);
@@ -74,27 +71,40 @@ const handleButtonClick = (event) => {
   const handleAllcommentButton = (event) => {
     setIsFiltered(false);
     // setcomments(comments);
-    setCurrentUsername('default');
+    setCurrentUsername("default");
   };
 
   const commentsRenderer = (comment, idx) => {
     return (
-      <comment
+      <Comment
         key={comment.id}
         comment={comment}
         handleDeletecomment={handleDeletecomment}
         idx={idx}
       />
     );
-  }
+  };
 
+  
+  // 주석 지워도 되지?
   return (
     <React.Fragment>
       <div className="commentForm__container">
         <div className="commentForm__wrapper">
-          <div className="commentForm__profile">
-            <img src="https://randomuser.me/api/portraits/men/98.jpg" />
+          <div>
+            
+            
+            {comments.map((comment) => (
+              <div>
+                <div className="commentForm__profile">
+                  <img src={comment.picture} width="50" alt="사진" />
+                  <div>{comment.username}</div>
+                </div>
+                <div className="commentForm__content">{comment.content}</div>
+              </div>
+            ))}
           </div>
+
           <div className="commentForm__inputContainer">
             <div className="commentForm__inputWrapper">
               <div className="commentForm__input">
@@ -114,14 +124,17 @@ const handleButtonClick = (event) => {
               </div>
               <div className="commentForm__count" role="status">
                 <span className="commentForm__count__text">
-                  {'total: ' + comments.length}
+                  {"total: " + comments.length}
                 </span>
               </div>
             </div>
             <div className="commentForm__submit">
               <div className="commentForm__submitIcon"></div>
               {/* TODO : 작성한 트윗을 전송할 수 있는 button 엘리먼트를 작성하세요. */}
-              <button className="commentForm__submitButton" onClick={handleButtonClick}>
+              <button
+                className="commentForm__submitButton"
+                onClick={handleButtonClick}
+              >
                 comment
               </button>
             </div>
@@ -134,24 +147,26 @@ const handleButtonClick = (event) => {
             -- click to filter comments by username --
           </option>
 
-          {comments.reduce((acc, cur) => {
-            const isNotUnique = acc.reduce((a, c) => {
-              if (c.username === cur.username) {
-                return true
-              }
-              return a === true ? true : false
-            }, false)
+          {comments
+            .reduce((acc, cur) => {
+              const isNotUnique = acc.reduce((a, c) => {
+                if (c.username === cur.username) {
+                  return true;
+                }
+                return a === true ? true : false;
+              }, false);
 
-            return isNotUnique ? acc : [...acc, cur]
-            }, []).map((comment) => {
-            return (
-              <option key={comment.id} value={comment.username}>
-                {comment.username}
-              </option>
-            );
-          })}
+              return isNotUnique ? acc : [...acc, cur];
+            }, [])
+            .map((comment) => {
+              return (
+                <option key={comment.id} value={comment.username}>
+                  {comment.username}
+                </option>
+              );
+            })}
         </select>
-        {currentUsername !== 'default' ? (
+        {currentUsername !== "default" ? (
           <button onClick={handleAllcommentButton}>
             <i className="far fa-caret-square-left"></i>
           </button>
@@ -159,8 +174,7 @@ const handleButtonClick = (event) => {
           <div></div>
         )}
       </div>
-      <ul className="comments">
-        {isFiltered ? filteredcomments.map(commentsRenderer) : comments.map(commentsRenderer)}</ul>
+     
     </React.Fragment>
   );
 };
