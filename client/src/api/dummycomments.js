@@ -5,7 +5,7 @@ const getRandomNumber = (min, max) => {
     return parseInt(Math.random() * (Number(max) - Number(min) + 2));
   };
   
-  const dummyTweets = [
+  const dummycomments = [
     {
       // id: shortid(),
       username: 'kimcoding',
@@ -65,5 +65,5 @@ const getRandomNumber = (min, max) => {
     },
   ];
   
-  export default dummyTweets;
+  export default dummycomments;
   
