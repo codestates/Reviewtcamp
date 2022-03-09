@@ -21,11 +21,11 @@ export default function App() {
     setAccessToken(data.token.accessToken);
   };
 
-  // ! New AccessToken발급
+  // ! New AccessToken발급 
   useEffect(() => {
     async function checkRefreshToKen() {
       // ! New AccessToken 어디서 발급 받나? 엔드포인드?
-      const result = await await fetch("https://reviewtcamp.com/refreshtoken", {
+      const result = await fetch("https://reviewtcamp.com/refreshtoken", {
         method: "POST",
         credentials: "include",
         headers: {
@@ -47,7 +47,6 @@ export default function App() {
     <div>   
     <NavBar />
       <Switch>
-   
         <Route exact path="/signin">
           <Signin loginHandler={loginHandler} />
         </Route>
