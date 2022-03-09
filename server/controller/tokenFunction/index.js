@@ -4,8 +4,9 @@ const secret = process.env.ACCESS_SECRET;
 
 module.exports = {
     generateAccessToken: (data) => {
-        // Access token으로 sign
-        return sign(data, secret, { expiresIn: '1d' })
+        // Access token으로 sign -> 토큰 생성
+        // console.log("❓ data: ", data);
+        return sign(data, secret, { expiresIn: '1d' });
     },
     sendAccessToken: (res, accessToken) => {
         // JWT 토큰을 쿠키로 전달

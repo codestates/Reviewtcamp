@@ -24,7 +24,6 @@ export default function App() {
     setAccessToken(data.token.accessToken);
   };
 
-  if (loading) return <div>Loading...</div>;
 
   return (
     <div>
