@@ -1,0 +1,73 @@
+.comment {
+    display: flex;
+    list-style: none;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid var(--main-border-color);
+  }
+  
+  .comment:hover {
+    background-color: var(--shade-color);
+  }
+  
+  .comment__profile {
+    padding: 0.2rem;
+  }
+  
+  .comment__profile > img {
+    display: inline-block;
+    width: 50px;
+    border-radius: 100%;
+  }
+  
+  .comment__content {
+    flex: 1 0 0;
+  }
+  
+  .comment__userInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .comment__userInfo--wrapper > .comment__username {
+    display: inline-block;
+    color: var(--bold-text-color);
+    font-weight: 700;
+    margin-left: 0.5rem;
+  }
+  
+  .comment__userInfo--wrapper > .comment__createdAt {
+    display: inline-block;
+    color: var(--sub-text-color);
+    margin-left: 0.5rem;
+  }
+  
+  .comment__userInfo--buttonWrapper > .comment__deleteButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--button-color);
+    margin-left: 0.5rem;
+    padding: 0.2rem;
+    border-radius: 50px;
+  }
+  
+  .comment__userInfo--buttonWrapper > .comment__deleteButton > .far {
+    color: var(--button-text-color);
+    background-color: var(--button-color);
+    font-size: 0.8rem;
+    padding: 0.1rem;
+    border-radius: 50px;
+  }
+  
+  .comment__userInfo--buttonWrapper > button:hover, 
+  .comment__userInfo--buttonWrapper > button:focus {
+    outline: none;
+    box-shadow: 0 0 3px var(--button-color);
+    background: var(--comments-component-color);
+  }
+  
+  .comment__message {
+    padding: 0.5rem;
+  }
+  

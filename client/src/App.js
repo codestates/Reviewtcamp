@@ -12,6 +12,7 @@ import ArticlePage from "./Pages/ArticlePage";
 import NavBar from "./Pages/NavBar";
 import Home from "./Pages/Home";
 import RegisterPage from "./Pages/RegisterPage";
+import Comments from "./Pages/Comments";
 
 export default function App() {
   const [isLogin, setIsLogin] = useState(false);
