@@ -2,27 +2,21 @@ import React, { useState } from "react";
 import Comment from "./Comment";
 import dummycomments from "../api/dummycomments";
 
-// 머해야 대지?
-// 글을 쓰면 상태 업데이트 (-> state에 추가하는 방식으로 해야겠네 임시로)
 
-// 아저씨 사진너무 붎쾌한데 ㅋㅋㅋ
-// 사진 위치가 댓글 위치인가?
-// 제일 아래쪽에 뜨게할꺼야? 댓글들?
 
 const Comments = () => {
   const [username, setUsername] = useState("");
   const [msg, setMsg] = useState("");
-  // 메시지라 유저네임이랑 작성하는 데 비어 있는 곳이 있어
-  // 잠깐만여~~ 아래로 내려와바~
+
   const [comments, setcomments] = useState(dummycomments); //
   const [filteredComments, setFilteredComments] = useState(dummycomments);
   const [isFiltered, setIsFiltered] = useState(false);
   const [currentUsername, setCurrentUsername] = useState("default");
 
-  //버튼을 누르면 이벤트가 발생하는데 거기에 들어갈 내용
+
   const handleButtonClick = (event) => {
     const comment = {
-      //코멘트 안에는 해당 내용들이 들억고
+  
       username: username,
       title: "new comment",
       content: msg,
@@ -30,11 +24,9 @@ const Comments = () => {
       updatedAt: new Date().toLocaleDateString("ko-KR"),
     };
 
-    //newcomments는 더미 텍스트에 있는 코멘츠를 복사한 값을
     const newcomments = [comment, ...comments];
     setcomments(newcomments);
-    //그러면 셋모멘트는 ([comment, ...comments]) 이게 된다는 말인데
-    //=>이 말은 다시 각각의 안에 있는 내용을 다 받아준다.
+  
   };
 
   const handleChangeUser = (event) => {
@@ -86,18 +78,15 @@ const Comments = () => {
   };
 
   
-  // 주석 지워도 되지?
   return (
     <React.Fragment>
       <div className="commentForm__container">
         <div className="commentForm__wrapper">
           <div>
-            
-            
             {comments.map((comment) => (
               <div>
                 <div className="commentForm__profile">
-                  <img src={comment.picture} width="50" alt="사진" />
+              
                   <div>{comment.username}</div>
                 </div>
                 <div className="commentForm__content">{comment.content}</div>

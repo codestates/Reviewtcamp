@@ -11,8 +11,10 @@ function RegisterPage() {
         content:''
     })
     const [viewContent, setViewContent] = useState([])
-    useEffect(() => {Axios.get('http://localhost:8080/api/get').then((response)=>{
+    useEffect(() => {Axios.get('http://www.reviewtcamp.com/board/:id').then((response)=>{
       setViewContent(response.data)
+      // useEffect(() => {Axios.get('http://localhost:8080/api/get').then((response)=>{
+      //   setViewContent(response.data)
     })},[viewContent])
     const getValue = e => {
         const {name, value} = e.target;
