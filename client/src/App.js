@@ -24,7 +24,6 @@ export default function App() {
     setAccessToken(data.token.accessToken);
   };
 
-  if (loading) return <div>Loading...</div>;
 
   return (
     <div>
@@ -39,7 +38,7 @@ export default function App() {
         <Route exact path="/mypage">
           <Mypage accessToken={accessToken} />
         </Route>
-        <Route exact path="/">
+        <Route exact path="/"> {/*여기부분 어떻게 해야하지?? */}
           {isLogin ? <Redirect to="/mypage" /> : <Redirect to="/signin" />}
         </Route>
         <Route exact path="/modal">

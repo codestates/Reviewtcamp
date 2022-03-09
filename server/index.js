@@ -7,17 +7,21 @@ const express = require("express");
 const controller = require('./controller');
 const app = express();
 
+const { user } = require('./models/user'); 
+
+// console.log(user)
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
 
 app.use(cors({
-  origin: ['https://localhost:8080'],
+  origin: ['http://localhost:3000'],
   credentials: true,
   methods: ['GET', 'POST', 'OPTIONS']
 }));
 
-app.use(cookieParser());
-app.get('/', (req, res) => {
+app.get('/', (req, res, next) => {
   res.send('welcome home 😁');
 });
 app.post('/signup', controller.signup);
