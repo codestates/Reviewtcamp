@@ -14,3 +14,6 @@
 - 생생한 부트캠프 정보를 실시간 댓글/대댓글로 소통 가능
 
 ## Final Render
+<img src="https://cdn.discordapp.com/attachments/947677155662364715/951389143911510066/1.gif">
+<img src="https://cdn.discordapp.com/attachments/947677155662364715/951389143236218920/2.gif">
+<img src="https://cdn.discordapp.com/attachments/947677155662364715/951389144570019870/3.gif">
