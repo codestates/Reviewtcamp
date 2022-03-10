@@ -13,6 +13,20 @@
 - 여러 부트캠프 리뷰를 게시판 형태로 자유롭게 작성 가능
 - 생생한 부트캠프 정보를 실시간 댓글/대댓글로 소통 가능
 
+## Team
+- 구관모(Front-End)
+  * JS, REACT, Styled-component, React Router, JSX, Axios, Redux, React Hooks, S3
+  * Github: Best-engineer
+- 권민주(Front-End)
+  * JS, REACT, Styled-component, React Router, JSX, Axios, Redux, React Hooks, S3
+  * Github: Minju20200305
+- 김현덕(Back-End / Leader) 
+  * Node.js, Express.js, Sequlize, MySQL, Amazon RDS, AWS, JWT
+  * Github: ToyCon
+- 이화랑(Back-End)
+  * Node.js, Express.js, Sequlize, MySQL, Amazon RDS, AWS, JWT
+  * Github: hwarang98
+
 ## Final Render
 <img src="https://cdn.discordapp.com/attachments/947677155662364715/951389143911510066/1.gif">
 <img src="https://cdn.discordapp.com/attachments/947677155662364715/951389143236218920/2.gif">
