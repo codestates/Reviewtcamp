@@ -31,10 +31,9 @@ export default function Signup() {
 
   // 회원가입 버튼을 누르면 post 요청
   const handleSignup = () => {
-    console.log("작동하니?");
     axios
       .post(
-        "https://localhost:8080/signup",
+        "https://localhost:4000/signup",
         {
           name: name,
           email: email,
@@ -65,6 +64,7 @@ export default function Signup() {
       setIsEmail(false);
     } else {
       setEmailMessage("멋진 아이디네요!");
+      setIsEmail(true);
     }
   }, []);
 

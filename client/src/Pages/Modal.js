@@ -58,7 +58,6 @@ export default function Modal() {
   return (
     <>
       <ModalContainer>
-        {isOpen === false ? "Open Modal" : "Opened!"}
         <ModalBackdrop onClick={openModalHandler}>
           <ModalView onClick={(e) => e.stopPropagation()}>
             <span onClick={openModalHandler} className="close-btn">
