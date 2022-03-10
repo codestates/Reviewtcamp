@@ -1,12 +1,14 @@
 .commentForm__container {
-    border-bottom: 1px solid var(--main-border-color);
+  border: 2px solid black;
     margin-bottom: 0.5rem;
   }
   
   .commentForm__wrapper {
+    
     display: flex;
     flex-direction: row;
     padding: 0.5rem 1rem;
+    border: 2px solid black;
 }
   
   .commentForm__profile {

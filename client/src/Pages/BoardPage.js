@@ -8,6 +8,7 @@ import "./BoardPage.css";
 function BoardPage() {
     const params = useParams();
     const [board, setBoard] = useState();
+    const [post, setPost] = useState();
     const [like, setLike] = useState(0);
 
     useEffect(() => {
@@ -40,26 +41,26 @@ function BoardPage() {
                 <Link to="/board/5"><MenuItem2>네이버</MenuItem2></Link>
                 <Link to="/board/6"><MenuItem2>기타</MenuItem2></Link>
         </div> 
-            <div style={{ display: "flex", gap: "8px", textAlign: "center" }}>
-                <div>제목</div>
-                <div>유저이름</div>
-                <div>날짜</div>
-                <div><span onClick={()=>{setLike(like+1)}}>👍</span>{like}</div>
-                <div>
-                    {board ? board.post.map(post =>
-                        <Link key={post.id} to={`/article/${post.id}`}>
-                            <div>
-                                <div>{post.title}</div>
-                                <div>{post.userName}</div>
-                                <div>{post.createdAt}</div>
-                            </div></Link>)
-                        :
-                        "불러오는 중... "}</div>
-                </div>
+        <div style={{ display: "flex", gap: "100px", textAlign: "center", paddingLeft:"30px" }}>
+        <div>제목</div>
+        <div>유저이름</div>
+        <div>날짜</div>
+       
+    </div>
+    {board ? board.post.map(post =>
+        <Link key={post.id} to={`/article/${post.id}/`}>
+            <div style={{ backgrounColor: "grey", display: "flex", gap: "30px", textAlign: "center", paddingLeft:"20px"  }}>
+                <div>{post.title}</div>
+                <div>{post.userName}</div>
+                <div>{post.createdAt}</div>
+                 <div><span onClick={()=>{setLike(like+1)}}>👍</span>{like}</div>
+            </div></Link>)
+        :
+        "불러오는 중... "}
             
             <div>
                 <Link to="/register">
-                    <button> New post</button>
+                <button className="button" style={{backgroundColor: "#94D3D7", height: "3.5rem", board:"none"}}> New post</button>
                 </Link>
             </div>
             <div>

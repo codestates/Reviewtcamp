@@ -38,3 +38,29 @@
     background: #F6CE45;
     border-radius: 5px;
   }
+
+
+  .menu-item2 {
+    display: inline-block;
+    color: rgb(59, 59, 59); 
+    background-color:#3681A2;
+    font-size: 1.2rem;
+    font-style: bold;
+    line-height: 3.5rem;
+    width: 16.666%;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
+  }
+  
+  .menu-item2:hover {
+    background-color: #F6CE45;
+    color: black;
+  }
+  
+  .menu-item2:active,
+  .menu-item2.active {
+    background-color: #F6CE45;
+    color: black;
+  }

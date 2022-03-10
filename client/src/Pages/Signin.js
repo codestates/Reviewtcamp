@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 
-axios.defaults.withCredentials = true;
+// axios.defaults.withCredentials = true;
 
 export default function Signin(props) {
   // 로그인 정보 상태 저장

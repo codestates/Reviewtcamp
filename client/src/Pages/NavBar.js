@@ -30,14 +30,17 @@ function NavBar() {
         <div className="menu">
         <Link to ="/board/1"><MenuItem>게시판</MenuItem></Link>
         <Link to ="/mypage"><MenuItem>마이페이지</MenuItem></Link>
-        <MenuItem> <Link to="/signin">{user ?
-                <div>
+        <MenuItem> 
+        {user ?
+                <Link to ="/board"><div>
                     <MenuItem onClick={logout}>로그아웃 {user.email}</MenuItem>
-                </div>
+                </div></Link>
                 :
-                <div>
+                <Link to="/signin"><div>
                     <MenuItem onClick={login}>로그인 </MenuItem>
-                </div>}</Link></MenuItem></div>
+                </div>  </Link>}
+                </MenuItem>
+                </div>
       </div>
     )
 }
