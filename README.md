@@ -1,7 +1,8 @@
 # Reviewtcamp
 
-## Logo
-![45eaafb6d375406d8689faa430364990](https://user-images.githubusercontent.com/61836008/156162588-fe8984aa-6431-4376-8362-6614988c24fa.png)
+
+  ![45eaafb6d375406d8689faa430364990](https://user-images.githubusercontent.com/61836008/156162588-fe8984aa-6431-4376-8362-6614988c24fa.png)
+
 
 ## About
 - Reviewtcamp = Review + Bootcamp
