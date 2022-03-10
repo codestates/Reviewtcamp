@@ -5,6 +5,7 @@
   .container {
     margin: 0 auto;
     width: 80%;
+    height: 80%;
     border: 1px solid #333;
     padding: 10px 0 30px 0;
     border-radius: 5px;
@@ -24,7 +25,7 @@
   
   .text-area {
     width: 80%;
-    min-height: 500px;
+    min-height: 50%;
   }
   
   .submit-button {
@@ -32,7 +33,34 @@
     height: 50px;
     font-size: 20px;
     padding: 20px;
+    margin-top: 30px;
     border: none;
-    background: indianred;
+    background: #F6CE45;
     border-radius: 5px;
+  }
+
+
+  .menu-item2 {
+    display: inline-block;
+    color: rgb(59, 59, 59); 
+    background-color:#3681A2;
+    font-size: 1.2rem;
+    font-style: bold;
+    line-height: 3.5rem;
+    width: 16.666%;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
+  }
+  
+  .menu-item2:hover {
+    background-color: #F6CE45;
+    color: black;
+  }
+  
+  .menu-item2:active,
+  .menu-item2.active {
+    background-color: #F6CE45;
+    color: black;
   }

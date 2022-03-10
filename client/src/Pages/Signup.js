@@ -2,7 +2,7 @@ import React, { useState, useCallback } from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 
-axios.defaults.withCredentials = true;
+// axios.defaults.withCredentials = true;
 
 export default function Signup() {
   // 이메일, 이름, 패스워드 확인

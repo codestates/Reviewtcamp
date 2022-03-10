@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
 
-axios.defaults.withCredentials = true;
+// axios.defaults.withCredentials = true;
 
 const ModalBackdrop = styled.div`
   position: fixed;
@@ -67,6 +67,7 @@ export default function Signin(props) {
 
   const history = useHistory();
 
+
   const handleEditUserinfo = (e) => {
     // 이메일, 로그인을 입력하지 않은 경우 에러 메시지
     console.log("작동중?");
@@ -84,7 +85,7 @@ export default function Signin(props) {
             Authorization: `Bearer ${props.accessToken}`,
             "Content-Type": "applicaton/json",
           },
-          withCredentials: true,
+          // withCredentials: true,
         }
       )
       .then((res) => {
