@@ -1,11 +1,12 @@
 import axios from "axios";
 const SERVER_URL =
-  "http://reviewtcamp.com";
+  "http://c7ca5631-5216-45b9-b7c4-8ce1e76cb0da.mock.pstmn.io";
 
 
 
   
 export const fetchBoardById = async (boardId) => {
+
   const response = await axios.get(`${SERVER_URL}/board/${boardId}`)
     .then(response => response.data);
   return response;

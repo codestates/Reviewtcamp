@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
 
-axios.defaults.withCredentials = true;
+// axios.defaults.withCredentials = true;
 
 export const ModalBackdrop = styled.div`
   position: fixed;
@@ -79,10 +79,10 @@ export default function Signin(props) {
   const history = useHistory();
   // 수정하기 버튼을 누르면  patch 요청
   const handleSignup = () => {
-    // console.log("작동하니?");
+    // console.log("작동하니?");s
     axios
       .patch(
-        "https://reviewtcamp.com/userinfo",
+        "http://c7ca5631-5216-45b9-b7c4-8ce1e76cb0da.mock.pstmn.io/userinfo",
         {
           newname: name,
           password: curPassword,
@@ -93,7 +93,7 @@ export default function Signin(props) {
             Authorization: `Bearer ${props.accessToken}`,
             "Content-Type": "applicaton/json",
           },
-          withCredentials: true,
+          // withCredentials: true,
         }
       )
       .then((res) => {
@@ -113,7 +113,7 @@ export default function Signin(props) {
 
     //  ! 비밀번호 맞는지 확인하는 uri 어떤거?
     axios
-      .post("https://reviewtcamp.com/userinfo", {
+      .post("https://c7ca5631-5216-45b9-b7c4-8ce1e76cb0da.mock.pstmn.io/userinfo", {
         // ! 토큰으로 사용자 확인 할것
         password: password,
       })
