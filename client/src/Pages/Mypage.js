@@ -5,7 +5,7 @@ import axios from "axios";
 
 // axios.defaults.withCredentials = true;
 
-export const ModalBackdrop = styled.div`
+const ModalBackdrop = styled.div`
   position: fixed;
   z-index: 999;
   top: 0;
@@ -17,30 +17,19 @@ export const ModalBackdrop = styled.div`
   place-items: center;
 `;
 
-export const ModalContainer = styled.div`
+const ModalContainer = styled.div`
   height: 15rem;
   text-align: center;
   margin: 120px auto;
 `;
 
-export const ModalBtn = styled.button`
-  background-color: #4000c7;
-  text-decoration: none;
-  border: none;
-  padding: 20px;
-  color: white;
-  border-radius: 30px;
-  cursor: grab;
-`;
-
-export const ModalView = styled.div.attrs((props) => ({
-  // attrs 메소드를 이용해서 아래와 같이 div 엘리먼트에 속성을 추가할 수 있습니다.
+const ModalView = styled.div.attrs((props) => ({
   role: "dialog",
 }))`
   border-radius: 10px;
   background-color: #ffffff;
-  width: 300px;
-  height: 100px;
+  width: 600px;
+  height: 400px;
 
   > div.close_btn {
     margin-top: 5px;
@@ -48,8 +37,8 @@ export const ModalView = styled.div.attrs((props) => ({
   }
 
   > div.desc {
-    margin-top: 25px;
-    color: #4000c7;
+    margin-top: 40px;
+    color: #000;
   }
 `;
 
@@ -77,12 +66,15 @@ export default function Signin(props) {
   const [isPasswordConfirm, setIsPasswordConfirm] = useState(false);
 
   const history = useHistory();
-  // 수정하기 버튼을 누르면  patch 요청
-  const handleSignup = () => {
-    // console.log("작동하니?");s
+
+
+  const handleEditUserinfo = (e) => {
+    // 이메일, 로그인을 입력하지 않은 경우 에러 메시지
+    console.log("작동중?");
+    console.log(e.target.value);
     axios
-      .patch(
-        "http://c7ca5631-5216-45b9-b7c4-8ce1e76cb0da.mock.pstmn.io/userinfo",
+      .put(
+        "https://reviewtcamp.com/userinfo",
         {
           newname: name,
           password: curPassword,
@@ -97,33 +89,9 @@ export default function Signin(props) {
         }
       )
       .then((res) => {
-        if (res.data.message !== "password changed") {
-        }
-        // ! 마이페이지 메인페이지로 돌아가야되는데?(수정,탈퇴 api가 없다.)
-        history.push("/mypage");
-      })
-      .catch((err) => console.log(err.message));
-  };
-
-  // 비밀번호 누를 경우 POST 요청
-  const handlePassword = (e) => {
-    // 이메일, 로그인을 입력하지 않은 경우 에러 메시지
-    console.log("작동중?");
-    console.log(e.target.value);
-
-    //  ! 비밀번호 맞는지 확인하는 uri 어떤거?
-    axios
-      .post("https://c7ca5631-5216-45b9-b7c4-8ce1e76cb0da.mock.pstmn.io/userinfo", {
-        // ! 토큰으로 사용자 확인 할것
-        password: password,
-      })
-      .then((res) => {
-        if (res.data.message !== "password changed") {
-          setCurPasswordMessage("비밀번호를 정확하게 입력해주세요.");
-        } else {
-          // ! 로그인 완료 시 -> 메인 게시판 URI가 어딨지?
-          history.push("/");
-        }
+        // ! 토큰을 보내주기 때문에 회원 수정이 거부될 경우가 x
+        // ! 수정 완료 시 -> 보드 게시판으로 이동
+        history.push("/board");
       })
       .catch((err) => console.log(err));
   };
@@ -177,31 +145,27 @@ export default function Signin(props) {
 
   const [isOpen, setIsOpen] = useState(false);
   const openModalHandler = () => {
-    setIsOpen(!isOpen);
+    setIsOpen(true);
   };
 
   return (
-    // <ModalBackdrop onClick={{ openModalHandler }}>
-    //   <ModalView onClick={(e) => e.stopPropagation()}>
     <div className="login-wrapper">
       <form onSubmit={(e) => e.defaultPrevented()}>
         <div className="login-input">
-          <span>
-            <button>
-              <Link to="/mypage">나의정보변경</Link>
-            </button>
-            {/* 내가 쓴글 불러오는 uri가 어떤거? */}
-            <button type="submit">
-              <Link to="/">내가 쓴글 불러오기</Link>
-            </button>
-          </span>
+          <button>
+            <Link to="/mypage">나의정보변경</Link>
+          </button>
+          {/* 내가 쓴글 불러오는 uri가 어떤거? */}
+          <button type="submit">
+            <Link to="/">내가 쓴글 불러오기</Link>
+          </button>
           <input
             id="newname"
             type="text"
             name="newname"
             placeholder="이름변경"
-            onChange={onChangeName}
             autoComplete="off"
+            onChange={onChangeName}
           />
           <div className="formbox">
             {name.length > 0 && (
@@ -211,66 +175,68 @@ export default function Signin(props) {
             )}
           </div>
 
-          <p>
-            <input
-              id="password"
-              type="password"
-              name="password"
-              placeholder="현재 비밀번호"
-            />
-            <div>{curPasswordMessage}</div>
-          </p>
+          <input
+            id="password"
+            type="password"
+            name="password"
+            placeholder="현재 비밀번호"
+          />
+          <div>{curPasswordMessage}</div>
 
-          <p>
-            <input
-              id="newpassword"
-              type="password"
-              name="newpassword"
-              placeholder="새 비밀번호"
-              onChange={onChangePassword}
-            />
-            <div className="formbox">
-              {password.length > 0 && (
-                <span className={`message ${isPassword ? "success" : "error"}`}>
-                  {passwordMessage}
-                </span>
-              )}
-            </div>
-          </p>
+          <input
+            id="newpassword"
+            type="password"
+            name="newpassword"
+            placeholder="새 비밀번호"
+            onChange={onChangePassword}
+          />
+          <div className="formbox">
+            {password.length > 0 && (
+              <span className={`message ${isPassword ? "success" : "error"}`}>
+                {passwordMessage}
+              </span>
+            )}
+          </div>
 
-          <p>
-            <input
-              id="newpasswordcheck"
-              type="password"
-              name="newpasswordcheck"
-              placeholder="새 비밀번호 확인"
-              onChange={onChangePasswordConfirm}
-            />
-            <div className="formbox">
-              {passwordConfirm.length > 0 && (
-                <span
-                  className={`message ${
-                    isPasswordConfirm ? "success" : "error"
-                  }`}
-                >
-                  {passwordConfirmMessage}
-                </span>
-              )}
-            </div>
-          </p>
+          <input
+            id="newpasswordcheck"
+            type="password"
+            name="newpasswordcheck"
+            placeholder="새 비밀번호 확인"
+            onChange={onChangePasswordConfirm}
+          />
+          <div className="formbox">
+            {passwordConfirm.length > 0 && (
+              <span
+                className={`message ${isPasswordConfirm ? "success" : "error"}`}
+              >
+                {passwordConfirmMessage}
+              </span>
+            )}
+          </div>
 
           <button type="reset">취소</button>
-          <button type="submit" onClick={handlePassword}>
+          <button type="submit" onClick={handleEditUserinfo}>
             수정하기
           </button>
           {/* 탈퇴하기 누르면 메인페이지로 넘어가야함 -> 링크 주소 확인할 것  */}
-          <button type="submit">
-            <Link to="/modal">탈퇴하기</Link>
+          {/*탈퇴하기 클릭 > 모달창 오픈 > 취소하기 or 탈퇴하기 > 이동 */}
+          <button type="submit" onClick={openModalHandler}>
+            탈퇴하기
           </button>
+          <ModalContainer>
+            {isOpen === true ? (
+              <ModalBackdrop onClick={openModalHandler}>
+                <ModalView onClick={(e) => e.stopPropagation()}>
+                  <div className="desc">정말 탈퇴하시겠습니까?</div>
+                  <button>취소</button>
+                  <button>탈퇴</button>
+                </ModalView>
+              </ModalBackdrop>
+            ) : null}
+          </ModalContainer>
         </div>
       </form>
     </div>
-    //   </ModalView>
-    // </ModalBackdrop>
   );
 }
